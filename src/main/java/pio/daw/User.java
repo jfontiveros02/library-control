@@ -1,7 +1,5 @@
 package pio.daw;
 
-
-
 public class User implements Localizable {
     private String id;
     private Integer nEntries = 0;
@@ -16,14 +14,21 @@ public class User implements Localizable {
     }
 
     public void registerNewEvent(EventType e){
-        if (e == EventType.ENTRY && !this.inside){
+        if(e == EventType.ENTRY && !this.inside){
             this.inside = true;
+            this.nEntries++;
         }
         else if(e == EventType.EXIT && this.inside){
-            this.inside = true;
+            this.inside = false;
         }
     }
-   public Boolean isInside(){
-    
-   }
+
+    public Integer getNEntries(){
+        return this.nEntries;
+    }
+
+     public Boolean isInside(){
+        return this.inside;
+     }
+   
 }

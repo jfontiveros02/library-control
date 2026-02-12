@@ -27,6 +27,7 @@ public class App {
     }
 // si es un array porqu
     public static void main(String[] args) {
+        System.out.println("/n>>Escriba un directorio<<");
         Path p = getPathFromArgs(args);
         Controlable controler = Library.fromFile(p);
         controler.printResume();

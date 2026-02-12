@@ -68,3 +68,9 @@ Ejemplo de salida:
     Usuario(s) con más entradas:
     U002
 
+1 mirar el txt(si esxiste)
+2 leer el txt -> LIST<String>
+3 leer linea a linea:(y cear un mapa)
+ a/  crear usuario o coger existente
+ b/llamar registerEvent
+ 4 crear library a partit List<User>

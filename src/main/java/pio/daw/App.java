@@ -1,6 +1,5 @@
 package pio.daw;
 
-<<<<<<< HEAD
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +14,7 @@ public class App {
      * @param args program args.
      * @return Path to file if exists.
      */
-    public static Path getPathFromArgs(String[] args) {
+    public static Path getPathFromArgs(String[] args) {// este args no es el mismo del main
         //Scanner sc = new Scanner(System.in);
         if (args == null || args.length < 1) {
             throw new IllegalArgumentException(">>> Escriba el directorio del archivo: ");
@@ -25,23 +24,8 @@ public class App {
             throw new IllegalArgumentException(">>> El archivo no existe: " + p);
         }
         return p;
-=======
-import java.nio.file.Path;
-
-public class App {
-    /**
-     * Parse the arguments of the program to get the library registry file
-     * path. Exits the program if the args are not correct or the file does
-     * not exists.
-     * @param args program args.
-     * @return Path to file if exists.
-     */
-    public static Path getPathFromArgs(String[] args){
-        //TODO
-        return null;
->>>>>>> a4b9341b2233ab345b8bbc70a879fdbda53ced28
     }
-
+// si es un array porqu
     public static void main(String[] args) {
         Path p = getPathFromArgs(args);
         Controlable controler = Library.fromFile(p);

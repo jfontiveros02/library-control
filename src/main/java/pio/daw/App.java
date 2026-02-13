@@ -7,29 +7,46 @@ import java.nio.file.Paths;
 public class App {
 
     /**
-     * Parse the arguments of the program to get the library registry file path.
-     * Exits the program if the args are not correct or the file does not
-     * exists.
-     *
-     * @param args program args.
-     * @return Path to file if exists.
+     * Este método recibe los argumentos del programa (args)
+     * y devuelve la ruta del archivo si es válida.
+     * 
+     * - Si no hay argumentos → error.
+     * - Si la ruta no existe → error.
      */
-    public static Path getPathFromArgs(String[] args) {// este args no es el mismo del main
-        //Scanner sc = new Scanner(System.in);
+    public static Path getPathFromArgs(String[] args) {
+        // Comprobamos que haya al menos un argumento
         if (args == null || args.length < 1) {
             throw new IllegalArgumentException(">>> Escriba el directorio del archivo: ");
         }
+
+        // Convertimos el texto del argumento en un Path
         Path p = Paths.get(args[0]);
-        if (!Files.exists(p)) {// se lee: si el archivo no existe buscado en la ruta "p"...
+
+        // Comprobamos que el archivo exista
+        if (!Files.exists(p)) {
             throw new IllegalArgumentException(">>> El archivo no existe: " + p);
         }
+
         return p;
     }
-// si es un array porqu
+
+    /**
+     * Método principal del programa.
+     * 
+     * 1. Pide la ruta del archivo (viene en args).
+     * 2. Carga la biblioteca desde ese archivo.
+     * 3. Imprime el resumen final.
+     */
     public static void main(String[] args) {
         System.out.println("/n>>Escriba un directorio<<");
+
+        // Obtenemos la ruta del archivo desde los argumentos
         Path p = getPathFromArgs(args);
+
+        // Cargamos la biblioteca leyendo el archivo
         Controlable controler = Library.fromFile(p);
+
+        // Mostramos el resumen de usuarios
         controler.printResume();
     }
 }

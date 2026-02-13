@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Collections;
 
-
 public class Library implements Controlable {
 
     private Map<String, User> users;
@@ -91,6 +90,8 @@ public class Library implements Controlable {
                 result.add(u);
             }
         }
+
+        result.sort(Comparator.comparing(User::getId));
         return result;
     }
 
@@ -100,20 +101,21 @@ public class Library implements Controlable {
      */
     @Override
     public List<User> getMaxEntryUsers() {
-        int max = 0; // Primero calculamos el máximo 
+        int max = 0;
         for (User u : users.values()) {
             if (u.getNEntries() > max) {
                 max = u.getNEntries();
             }
         }
 
-        // Luego buscamos los que tengan ese máximo
         List<User> result = new ArrayList<>();
         for (User u : users.values()) {
             if (u.getNEntries() == max) {
                 result.add(u);
             }
         }
+
+        result.sort(Comparator.comparing(User::getId));
         return result;
     }
 
@@ -122,7 +124,7 @@ public class Library implements Controlable {
      */
     @Override
     public List<User> getUserList() {
-        List<User> list = new ArrayList<>(users.values()); 
+        List<User> list = new ArrayList<>(users.values());
         // Orden con Comparator
         Collections.sort(list, new Comparator<User>() {
             @Override
@@ -145,15 +147,18 @@ public class Library implements Controlable {
         }
 
         System.out.println();
+
         System.out.println("Número de entradas por usuario:");
         for (User u : getUserList()) {
             System.out.println(u.getId() + " -> " + u.getNEntries());
         }
 
         System.out.println();
+
         System.out.println("Usuario(s) con más entradas:");
         for (User u : getMaxEntryUsers()) {
             System.out.println(u.getId());
         }
     }
+
 }

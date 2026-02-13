@@ -23,7 +23,7 @@ public class Library implements Controlable {
 
     public static Library fromFile(Path path) {
         Library library = new Library();
-        //TODO
+        //TODO acabar
         String line = null;
         String[] splittedLine = line.split(";");
         String id = splittedLine[0];
@@ -79,7 +79,8 @@ public class Library implements Controlable {
         return users.values().stream().sorted(Comparator.comparing(User::getId)).toList();
         /**
          * Print a resume of the current status: 1. Current users 2. Entries per
-         * user 3. User with more entries
+         * user 3. User with more entries necesito una lista de usuarios solo los valores no loas 
+         * keys se que estan enel mapa asique vamos a sacar el value y guardarlo en una lista
          */
     }
 

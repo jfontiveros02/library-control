@@ -9,6 +9,10 @@ public class User implements Localizable {
         this.id = id;
     }
 
+    public static Integer compare (User u1, User u2){
+        return u1.getId().compareTo(u2.getId());// para comparar usuarios en getUserList()
+    }
+
     public String getId(){
         return this.id;
     }
